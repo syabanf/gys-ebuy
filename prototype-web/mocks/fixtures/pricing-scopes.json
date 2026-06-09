@@ -1,0 +1,5 @@
+[
+  { "id": "scope-central", "type": "central", "label": "GYS Central Pricing", "distributorId": null, "active": true, "notes": "Default applied when no distributor-specific scope matches" },
+  { "id": "scope-dist-001", "type": "distributor", "label": "PT Mitra Baja Sentosa (Jakarta)", "distributorId": "dist-001", "active": true, "notes": "Distributor-managed pricing for Jakarta region" },
+  { "id": "scope-dist-002", "type": "distributor", "label": "CV Surya Logam (Surabaya)", "distributorId": "dist-002", "active": true, "notes": "Distributor-managed pricing with regional premium" }
+]

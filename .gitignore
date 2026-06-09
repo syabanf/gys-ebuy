@@ -1,0 +1,31 @@
+# OS / editor
+.DS_Store
+*.log
+.vscode/
+.idea/
+
+# Agent / local tooling
+.claude/
+
+# --- Web (Nuxt / pnpm / Turbo) ---
+node_modules/
+.nuxt/
+.output/
+.turbo/
+dist/
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# --- Mobile (Flutter / Dart) ---
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+.pub-cache/
+.pub/
+coverage/
+app.*.symbols
+app.*.map.json

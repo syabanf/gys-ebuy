@@ -1,0 +1,8 @@
+[
+  { "id": "cat-rebar-plain", "code": "BPL", "name": "Besi Beton Polos", "description": "Plain reinforcing bar" },
+  { "id": "cat-rebar-deformed", "code": "BUL", "name": "Besi Beton Ulir", "description": "Deformed reinforcing bar (TS)" },
+  { "id": "cat-wire-mesh", "code": "WMS", "name": "Wire Mesh", "description": "Welded wire mesh" },
+  { "id": "cat-plate", "code": "PLT", "name": "Plat Baja", "description": "Steel plate" },
+  { "id": "cat-beam", "code": "BEM", "name": "Profile Beam", "description": "H-Beam, I-Beam, WF" },
+  { "id": "cat-pipe", "code": "PIP", "name": "Pipa Baja", "description": "Steel pipe" }
+]

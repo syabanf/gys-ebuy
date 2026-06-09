@@ -1,0 +1,33 @@
+{
+  "name": "gys-prototype-web",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "description": "GYS E-Ordering UI prototype (Phase 0) — Distributor + GYS Internal Nuxt apps with mocked data",
+  "scripts": {
+    "dev": "concurrently -n distributor,internal -c green,blue \"pnpm dev:distributor\" \"pnpm dev:internal\"",
+    "dev:distributor": "pnpm --filter @gys/distributor dev",
+    "dev:internal": "pnpm --filter @gys/internal dev",
+    "generate": "turbo run generate",
+    "preview": "turbo run generate && pnpm preview:serve",
+    "preview:serve": "concurrently -n distributor,internal,mobile -c green,blue,magenta \"serve -s apps/distributor/.output/public -l 4000\" \"serve -s apps/internal/.output/public -l 4001\" \"serve -s ../prototype-mobile/build/web -l 4002\"",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "serve": "^14.2.4",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "5.4.11"
+    }
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  }
+}

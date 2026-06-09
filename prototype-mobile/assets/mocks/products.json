@@ -1,0 +1,12 @@
+[
+  { "id": "p-001", "sku": "BPL-08-12", "name": "Besi Beton Polos 8mm × 12m", "categoryId": "cat-rebar-plain", "uom": "batang", "centralPrice": 58000 },
+  { "id": "p-002", "sku": "BPL-10-12", "name": "Besi Beton Polos 10mm × 12m", "categoryId": "cat-rebar-plain", "uom": "batang", "centralPrice": 89500 },
+  { "id": "p-003", "sku": "BPL-12-12", "name": "Besi Beton Polos 12mm × 12m", "categoryId": "cat-rebar-plain", "uom": "batang", "centralPrice": 128500 },
+  { "id": "p-004", "sku": "BUL-10-12", "name": "Besi Beton Ulir 10mm × 12m", "categoryId": "cat-rebar-deformed", "uom": "batang", "centralPrice": 94000 },
+  { "id": "p-005", "sku": "BUL-13-12", "name": "Besi Beton Ulir 13mm × 12m", "categoryId": "cat-rebar-deformed", "uom": "batang", "centralPrice": 158000 },
+  { "id": "p-006", "sku": "BUL-16-12", "name": "Besi Beton Ulir 16mm × 12m", "categoryId": "cat-rebar-deformed", "uom": "batang", "centralPrice": 238000 },
+  { "id": "p-010", "sku": "WMS-M08-2X5", "name": "Wire Mesh M8 (2.1m × 5.4m)", "categoryId": "cat-wire-mesh", "uom": "lembar", "centralPrice": 575000 },
+  { "id": "p-012", "sku": "PLT-5-4X8", "name": "Plat Baja 5mm (4ft × 8ft)", "categoryId": "cat-plate", "uom": "lembar", "centralPrice": 1620000 },
+  { "id": "p-015", "sku": "HBM-150-12", "name": "H-Beam 150×150 × 12m", "categoryId": "cat-beam", "uom": "batang", "centralPrice": 5230000 },
+  { "id": "p-018", "sku": "PIP-2INC-6", "name": "Pipa Baja 2\" Sch 40 × 6m", "categoryId": "cat-pipe", "uom": "batang", "centralPrice": 432000 }
+]

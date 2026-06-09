@@ -1,0 +1,11 @@
+{
+  "name": "@gys/tailwind-preset",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "files": ["index.js", "index.d.ts", "tokens.js", "tokens.d.ts"],
+  "peerDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

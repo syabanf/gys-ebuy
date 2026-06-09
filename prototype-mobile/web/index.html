@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <!--
+    base href is replaced by the value of the `--base-href` argument
+    provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="GYS E-Ordering — Aplikasi Pembeli (Prototype)">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="GYS Buyer">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>GYS Buyer — Prototype</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // This prototype no longer uses a service worker. Proactively remove any
+    // stale one (and its caches) left by earlier builds so the latest version
+    // — including the phone frame — always loads on a normal reload.
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (rs) {
+        rs.forEach(function (r) { r.unregister(); });
+      }).catch(function () {});
+    }
+    if (window.caches && caches.keys) {
+      caches.keys().then(function (ks) {
+        ks.forEach(function (k) { if (/flutter/i.test(k)) caches.delete(k); });
+      }).catch(function () {});
+    }
+  </script>
+
+  <style>
+    :root { --bezel: #0b1115; --brand: #137A40; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(1100px 560px at 50% -12%, #e9f1ec 0%, rgba(233,241,236,0) 62%),
+        linear-gradient(160deg, #eef2f1 0%, #dde6e1 55%, #d2dcd6 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    /* ---- Phone frame (desktop) ---- */
+    #phone-frame {
+      position: relative;
+      height: min(860px, 88vh);
+      aspect-ratio: 412 / 880;
+      background: var(--bezel);
+      border-radius: 54px;
+      padding: 14px;
+      flex: 0 0 auto;
+      box-shadow:
+        0 50px 90px -25px rgba(2, 16, 10, .55),
+        0 0 0 2px rgba(255, 255, 255, .05) inset,
+        0 1px 0 1px rgba(0, 0, 0, .4);
+    }
+    /* volume buttons (left) */
+    #phone-frame::before {
+      content: "";
+      position: absolute; left: -3px; top: 152px;
+      width: 3px; height: 58px; border-radius: 3px;
+      background: rgba(0, 0, 0, .55);
+      box-shadow: 0 86px 0 rgba(0, 0, 0, .55);
+    }
+    /* power button (right) */
+    #phone-frame::after {
+      content: "";
+      position: absolute; right: -3px; top: 210px;
+      width: 3px; height: 92px; border-radius: 3px;
+      background: rgba(0, 0, 0, .55);
+    }
+
+    /* the glass screen: white, rounded, clips content */
+    #screen {
+      position: relative;
+      width: 100%; height: 100%;
+      background: #ffffff;
+      border-radius: 42px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    /* reserved status-bar area so app content never hides under the island */
+    #statusbar { flex: 0 0 40px; background: #ffffff; }
+    /* Flutter renders here and fills the remaining space */
+    #flutter_host { position: relative; flex: 1 1 auto; min-height: 0; }
+
+    /* dynamic island (sits within the status-bar strip) */
+    #notch {
+      position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+      width: 110px; height: 28px; border-radius: 16px;
+      background: var(--bezel);
+      z-index: 20; pointer-events: none;
+    }
+
+    /* loading placeholder (removed once Flutter boots) */
+    #boot {
+      position: absolute; inset: 0; z-index: 10;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+      background: #ffffff; pointer-events: none;
+    }
+    #boot .logo {
+      width: 64px; height: 64px; border-radius: 16px;
+      background: var(--brand); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 20px; letter-spacing: .5px;
+    }
+    #boot .spin {
+      width: 26px; height: 26px; border-radius: 50%;
+      border: 3px solid #d7e3dc; border-top-color: var(--brand);
+      animation: gys-spin .8s linear infinite;
+    }
+    @keyframes gys-spin { to { transform: rotate(360deg); } }
+
+    .caption { color: #54655c; font-size: 13px; font-weight: 500; letter-spacing: .2px; flex: 0 0 auto; }
+    .caption b { color: var(--brand); font-weight: 700; }
+    .applinks { display: flex; align-items: center; gap: 16px; flex: 0 0 auto; margin-top: -6px; }
+    .applinks span { color: #7c8a82; font-size: 12px; }
+    .applinks a { color: var(--brand); font-size: 13px; font-weight: 600; text-decoration: none; opacity: .9; }
+    .applinks a:hover { opacity: 1; text-decoration: underline; }
+
+    /* ---- Full screen on real phones / short viewports ---- */
+    @media (max-width: 540px), (max-height: 640px) {
+      body { background: #fff; padding: 0; gap: 0; display: block; }
+      #phone-frame { height: 100%; width: 100%; aspect-ratio: auto; border-radius: 0; padding: 0; box-shadow: none; }
+      #phone-frame::before, #phone-frame::after { display: none; }
+      #screen { border-radius: 0; }
+      #statusbar { display: none; }
+      #notch { display: none; }
+      .caption { display: none; }
+      .applinks { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="phone-frame">
+    <div id="screen">
+      <div id="statusbar"></div>
+      <div id="flutter_host">
+        <div id="boot">
+          <div class="logo">GYS</div>
+          <div class="spin"></div>
+        </div>
+      </div>
+    </div>
+    <div id="notch"></div>
+  </div>
+  <div class="caption">GYS E-Ordering · <b>Aplikasi Pembeli</b> — Prototype</div>
+  <div class="applinks">
+    <span>Buka konsol lain:</span>
+    <a href="http://localhost:4000" target="_blank" rel="noopener">Portal Distributor ↗</a>
+    <a href="http://localhost:4001" target="_blank" rel="noopener">GYS Internal ↗</a>
+  </div>
+
+  <!-- Custom flutter_bootstrap.js renders the app into #flutter_host -->
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

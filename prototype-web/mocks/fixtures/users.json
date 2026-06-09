@@ -1,0 +1,10 @@
+[
+  { "id": "user-gys-sales-01", "username": "andi.sales", "displayName": "Andi Wijaya", "email": "andi.wijaya@gys.co.id", "role": "gys_sales", "ldapGroups": ["GYS-Sales"] },
+  { "id": "user-gys-sales-02", "username": "dimas.sales", "displayName": "Dimas Saputra", "email": "dimas.saputra@gys.co.id", "role": "gys_sales", "ldapGroups": ["GYS-Sales"] },
+  { "id": "user-gys-it-01", "username": "rina.it", "displayName": "Rina Permata", "email": "rina.permata@gys.co.id", "role": "gys_it_admin", "ldapGroups": ["GYS-IT-Admin", "GYS-Sales"] },
+  { "id": "user-gys-it-02", "username": "eko.it", "displayName": "Eko Nugroho", "email": "eko.nugroho@gys.co.id", "role": "gys_it_admin", "ldapGroups": ["GYS-IT-Admin"] },
+  { "id": "user-dist-001-owner", "username": "budi.mitrabaja", "displayName": "Budi Santoso", "email": "budi@mitrabaja.co.id", "role": "distributor_owner", "distributorId": "dist-001" },
+  { "id": "user-dist-002-owner", "username": "sri.suryalogam", "displayName": "Sri Wahyuni", "email": "sri@suryalogam.co.id", "role": "distributor_owner", "distributorId": "dist-002" },
+  { "id": "user-dist-003-owner", "username": "rahmat.andalas", "displayName": "Rahmat Hidayat", "email": "rahmat@andalassteel.co.id", "role": "distributor_owner", "distributorId": "dist-003" },
+  { "id": "user-dist-004-owner", "username": "asep.priangan", "displayName": "Asep Sunandar", "email": "asep@prianganbaja.co.id", "role": "distributor_owner", "distributorId": "dist-004" }
+]

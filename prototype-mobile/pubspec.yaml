@@ -1,0 +1,26 @@
+name: gys_buyer_prototype
+description: "GYS E-Ordering — Buyer Mobile Prototype (Phase 0)"
+publish_to: 'none'
+version: 0.0.1+1
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  go_router: ^14.6.1
+  intl: ^0.20.2
+  fl_chart: ^0.69.2
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/mocks/

@@ -1,0 +1,30 @@
+{
+  "name": "@gys/distributor",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev --port 3000",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview --port 3000",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@gys/tailwind-preset": "workspace:*",
+    "@gys/ui": "workspace:*",
+    "@pinia/nuxt": "0.7.0",
+    "@vueuse/nuxt": "11.3.0",
+    "nuxt": "3.14.1592",
+    "pinia": "2.2.6",
+    "vue": "3.5.13",
+    "vue-router": "4.4.5"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.7.2"
+  }
+}

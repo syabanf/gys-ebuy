@@ -1,0 +1,74 @@
+[
+  {
+    "id": "dist-001",
+    "code": "DST-JKT-01",
+    "legalName": "PT Mitra Baja Sentosa",
+    "npwp": "01.234.567.8-001.000",
+    "city": "Jakarta",
+    "province": "DKI Jakarta",
+    "serviceAreas": ["DKI Jakarta", "Banten", "Jawa Barat"],
+    "contact": { "name": "Budi Santoso", "phone": "+62-21-5550-1234", "email": "budi@mitrabaja.co.id" },
+    "status": "active",
+    "joinedAt": "2024-08-15"
+  },
+  {
+    "id": "dist-002",
+    "code": "DST-SBY-01",
+    "legalName": "CV Surya Logam Indonesia",
+    "npwp": "02.345.678.9-002.000",
+    "city": "Surabaya",
+    "province": "Jawa Timur",
+    "serviceAreas": ["Jawa Timur", "Bali", "Nusa Tenggara Barat"],
+    "contact": { "name": "Sri Wahyuni", "phone": "+62-31-5550-5678", "email": "sri@suryalogam.co.id" },
+    "status": "active",
+    "joinedAt": "2025-01-20"
+  },
+  {
+    "id": "dist-003",
+    "code": "DST-MDN-01",
+    "legalName": "PT Andalas Steel Distribusi",
+    "npwp": "03.456.789.0-003.000",
+    "city": "Medan",
+    "province": "Sumatera Utara",
+    "serviceAreas": ["Sumatera Utara", "Aceh", "Riau"],
+    "contact": { "name": "Rahmat Hidayat", "phone": "+62-61-5550-9012", "email": "rahmat@andalassteel.co.id" },
+    "status": "active",
+    "joinedAt": "2025-03-10"
+  },
+  {
+    "id": "dist-004",
+    "code": "DST-BDG-01",
+    "legalName": "PT Priangan Baja Utama",
+    "npwp": "04.567.890.1-004.000",
+    "city": "Bandung",
+    "province": "Jawa Barat",
+    "serviceAreas": ["Jawa Barat", "DKI Jakarta"],
+    "contact": { "name": "Asep Sunandar", "phone": "+62-22-5550-3344", "email": "asep@prianganbaja.co.id" },
+    "status": "active",
+    "joinedAt": "2025-05-02"
+  },
+  {
+    "id": "dist-005",
+    "code": "DST-SMG-01",
+    "legalName": "CV Tegal Baja Makmur",
+    "npwp": "05.678.901.2-005.000",
+    "city": "Semarang",
+    "province": "Jawa Tengah",
+    "serviceAreas": ["Jawa Tengah", "DI Yogyakarta"],
+    "contact": { "name": "Joko Susilo", "phone": "+62-24-5550-7788", "email": "joko@tegalbaja.co.id" },
+    "status": "active",
+    "joinedAt": "2025-07-18"
+  },
+  {
+    "id": "dist-006",
+    "code": "DST-MKS-01",
+    "legalName": "PT Celebes Steel Mandiri",
+    "npwp": "06.789.012.3-006.000",
+    "city": "Makassar",
+    "province": "Sulawesi Selatan",
+    "serviceAreas": ["Sulawesi Selatan", "Sulawesi Barat", "Sulawesi Tenggara"],
+    "contact": { "name": "Andi Mappanyukki", "phone": "+62-411-5550-2211", "email": "andi@celebessteel.co.id" },
+    "status": "inactive",
+    "joinedAt": "2025-09-05"
+  }
+]
