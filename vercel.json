@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "bash scripts/build-vercel.sh",
+  "outputDirectory": "dist",
+  "framework": null,
+  "redirects": [
+    { "source": "/distributor", "destination": "/distributor/" },
+    { "source": "/internal", "destination": "/internal/" },
+    { "source": "/mobile", "destination": "/mobile/" }
+  ],
+  "rewrites": [
+    { "source": "/distributor/:path*", "destination": "/distributor/index.html" },
+    { "source": "/internal/:path*", "destination": "/internal/index.html" }
+  ]
+}

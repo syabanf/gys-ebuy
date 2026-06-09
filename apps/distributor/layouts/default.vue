@@ -28,11 +28,13 @@ const nav = [
   ] },
 ]
 
-// Cross-app demo links (localhost demo ports)
+// Cross-app links. On a single-root deploy (Vercel) the apps live under
+// /distributor/, /internal/, /mobile/; locally each runs on its own port.
+const deployed = useRuntimeConfig().app.baseURL !== '/'
 const apps = [
-  { label: 'Portal Distributor', sublabel: 'Web distributor', url: 'http://localhost:4000', icon: '◰', current: true },
-  { label: 'GYS Internal', sublabel: 'Konsol Sales & IT', url: 'http://localhost:4001', icon: '◉' },
-  { label: 'Buyer Mobile', sublabel: 'Aplikasi pembeli (Flutter Web)', url: 'http://localhost:4002', icon: '◫' },
+  { label: 'Portal Distributor', sublabel: 'Web distributor', url: deployed ? '/distributor/' : 'http://localhost:4000', icon: '◰', current: true },
+  { label: 'GYS Internal', sublabel: 'Konsol Sales & IT', url: deployed ? '/internal/' : 'http://localhost:4001', icon: '◉' },
+  { label: 'Buyer Mobile', sublabel: 'Aplikasi pembeli (Flutter Web)', url: deployed ? '/mobile/' : 'http://localhost:4002', icon: '◫' },
 ]
 
 const searchItems = ref<{ label: string; sublabel?: string; to: string; group?: string }[]>([])

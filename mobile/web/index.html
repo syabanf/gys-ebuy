@@ -166,9 +166,20 @@
   <div class="caption">GYS E-Ordering · <b>Aplikasi Pembeli</b> — Prototype</div>
   <div class="applinks">
     <span>Buka konsol lain:</span>
-    <a href="http://localhost:4000" target="_blank" rel="noopener">Portal Distributor ↗</a>
-    <a href="http://localhost:4001" target="_blank" rel="noopener">GYS Internal ↗</a>
+    <a data-app="distributor" href="http://localhost:4000" target="_blank" rel="noopener">Portal Distributor ↗</a>
+    <a data-app="internal" href="http://localhost:4001" target="_blank" rel="noopener">GYS Internal ↗</a>
   </div>
+  <script>
+    // Single-root deploy: this app is served under /mobile/, so point the
+    // console links at same-origin subpaths instead of localhost dev ports.
+    (function () {
+      if (location.pathname.indexOf('/mobile') !== 0) return;
+      var map = { distributor: '/distributor/', internal: '/internal/' };
+      document.querySelectorAll('.applinks a[data-app]').forEach(function (a) {
+        a.setAttribute('href', map[a.getAttribute('data-app')]);
+      });
+    })();
+  </script>
 
   <!-- Custom flutter_bootstrap.js renders the app into #flutter_host -->
   <script src="flutter_bootstrap.js" async></script>

@@ -12,10 +12,17 @@ class GysApp {
   const GysApp(this.name, this.subtitle, this.url, this.icon, {this.current = false});
 }
 
-const gysApps = <GysApp>[
-  GysApp('Buyer Mobile', 'Aplikasi pembeli (Flutter Web)', 'http://localhost:4002', Icons.smartphone_outlined, current: true),
-  GysApp('Portal Distributor', 'Web distributor', 'http://localhost:4000', Icons.storefront_outlined),
-  GysApp('GYS Internal', 'Konsol Sales & IT', 'http://localhost:4001', Icons.admin_panel_settings_outlined),
+// On a single-root deploy (Vercel) this app is served under /mobile/, and the
+// other apps live under /distributor/ and /internal/ on the same origin.
+// Locally each app runs on its own port.
+bool get _deployed => Uri.base.path.startsWith('/mobile');
+String _appUrl(String subPath, String localUrl) =>
+    _deployed ? Uri.base.resolve(subPath).toString() : localUrl;
+
+List<GysApp> gysApps() => [
+  GysApp('Buyer Mobile', 'Aplikasi pembeli (Flutter Web)', _appUrl('/mobile/', 'http://localhost:4002'), Icons.smartphone_outlined, current: true),
+  GysApp('Portal Distributor', 'Web distributor', _appUrl('/distributor/', 'http://localhost:4000'), Icons.storefront_outlined),
+  GysApp('GYS Internal', 'Konsol Sales & IT', _appUrl('/internal/', 'http://localhost:4001'), Icons.admin_panel_settings_outlined),
 ];
 
 Future<void> _open(BuildContext context, GysApp app) async {
@@ -54,7 +61,7 @@ void showGysAppSwitcher(BuildContext context) {
               child: Text('Pindah ke aplikasi lain (demo) — terbuka di tab baru.', style: TextStyle(fontSize: 13, color: GysColors.neutral500)),
             ),
           ),
-          ...gysApps.map((app) => ListTile(
+          ...gysApps().map((app) => ListTile(
                 leading: Container(
                   height: 40,
                   width: 40,

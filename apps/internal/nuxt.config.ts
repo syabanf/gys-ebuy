@@ -16,6 +16,9 @@ export default defineNuxtConfig({
   // Branded loading screen shown instantly while the SPA bundle boots.
   spaLoadingTemplate: 'spa-loading-template.html',
   app: {
+    // Base path for single-root deployment (Vercel serves this app under
+    // /internal/). Defaults to '/' for local dev / `pnpm preview`.
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: 'GYS Internal — E-Ordering',

@@ -18,6 +18,9 @@ export default defineNuxtConfig({
   // instead of a blank white page.
   spaLoadingTemplate: 'spa-loading-template.html',
   app: {
+    // Base path for single-root deployment (Vercel serves this app under
+    // /distributor/). Defaults to '/' for local dev / `pnpm preview`.
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: 'GYS Distributor — E-Ordering',

@@ -54,6 +54,34 @@ Then open:
 > screen it goes full-screen. Every app has an **app switcher** (▦ in the topbar /
 > app bar) to jump between the three surfaces during a demo.
 
+## Deploy to Vercel (single root)
+
+One Vercel project serves everything from one root. `scripts/build-vercel.sh`
+builds all three apps into `dist/` under sub-paths and adds a landing page:
+
+| Path | App |
+|---|---|
+| `/` | Landing page (links to the three apps) |
+| `/distributor/` | Distributor portal (Nuxt SPA) |
+| `/internal/` | GYS Internal console (Nuxt SPA) |
+| `/mobile/` | Buyer mobile (Flutter web) |
+
+Cross-app links auto-switch to these sub-paths when deployed (they use localhost
+ports only for the local demo). Config lives in `vercel.json` (build command,
+`outputDirectory: dist`, SPA-fallback rewrites).
+
+**Deploy:** import the GitHub repo in the Vercel dashboard (zero extra config —
+it reads `vercel.json`), or run `vercel --prod` from the repo root. The build
+installs Flutter automatically in CI to build the mobile app, so no Flutter setup
+is needed on Vercel.
+
+**Preview the exact production build locally:**
+
+```bash
+bash scripts/build-vercel.sh   # builds dist/ (uses your local Flutter)
+npx serve dist                 # open http://localhost:3000
+```
+
 ## Development mode (hot reload)
 
 ```bash
