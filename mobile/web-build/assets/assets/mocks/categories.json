@@ -1,0 +1,8 @@
+[
+  { "id": "cat-rebar-plain", "name": "Besi Beton Polos", "icon": "rebar" },
+  { "id": "cat-rebar-deformed", "name": "Besi Beton Ulir", "icon": "rebar" },
+  { "id": "cat-wire-mesh", "name": "Wire Mesh", "icon": "mesh" },
+  { "id": "cat-plate", "name": "Plat Baja", "icon": "plate" },
+  { "id": "cat-beam", "name": "Profile Beam", "icon": "beam" },
+  { "id": "cat-pipe", "name": "Pipa Baja", "icon": "pipe" }
+]

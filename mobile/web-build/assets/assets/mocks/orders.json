@@ -1,0 +1,5 @@
+[
+  { "id": "ord-101", "orderNumber": "GYS-2026-000124", "status": "pending_payment", "total": 4640000, "items": 1, "placedAt": "2026-06-09T08:15:00+07:00" },
+  { "id": "ord-102", "orderNumber": "GYS-2026-000120", "status": "shipped", "total": 11900000, "items": 3, "placedAt": "2026-06-02T09:00:00+07:00" },
+  { "id": "ord-103", "orderNumber": "GYS-2026-000118", "status": "delivered", "total": 14750000, "items": 3, "placedAt": "2026-05-22T08:30:00+07:00" }
+]

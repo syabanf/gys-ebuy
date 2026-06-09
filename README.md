@@ -73,9 +73,9 @@ ports only for the local demo). Config lives in `vercel.json` (build command,
 **Deploy:** import the GitHub repo in the Vercel dashboard (zero extra config —
 it reads `vercel.json`), or run `vercel --prod` from the repo root. The Vercel
 build is **Node-only** (Nuxt apps build in CI); the Flutter app does not build on
-Vercel — its compiled web output is committed at `mobile/web-build/` (~4 MB;
-CanvasKit is loaded from Google's gstatic CDN) and copied into `dist/mobile`. So
-no Flutter SDK is needed on Vercel.
+Vercel — its compiled web output is committed at `mobile/web-build/` (~33 MB;
+CanvasKit is bundled locally so it loads on any network — no external CDN) and
+copied into `dist/mobile`. So no Flutter SDK is needed on Vercel.
 
 **After changing the mobile app**, refresh the committed build (needs Flutter
 locally) and commit it:

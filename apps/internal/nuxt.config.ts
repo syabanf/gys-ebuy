@@ -2,6 +2,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
   devtools: { enabled: false },
   ssr: false,
+  // Force static output (.output/public). Without this, Nitro auto-detects
+  // Vercel and writes to .vercel/output, which breaks the single-root assembly.
+  nitro: { preset: 'static' },
   modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@vueuse/nuxt'],
   // Point the Tailwind module at our CSS so it doesn't inject its own default
   // stylesheet (which breaks the production CSS build).
