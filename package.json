@@ -1,16 +1,16 @@
 {
-  "name": "gys-prototype-web",
+  "name": "gys-ebuy",
   "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@9.15.9",
-  "description": "GYS E-Ordering UI prototype (Phase 0) — Distributor + GYS Internal Nuxt apps with mocked data",
+  "description": "GYS E-Ordering UI prototype (Phase 0) — Distributor + GYS Internal Nuxt apps (web) with mocked data; Flutter buyer app under mobile/",
   "scripts": {
     "dev": "concurrently -n distributor,internal -c green,blue \"pnpm dev:distributor\" \"pnpm dev:internal\"",
     "dev:distributor": "pnpm --filter @gys/distributor dev",
     "dev:internal": "pnpm --filter @gys/internal dev",
     "generate": "turbo run generate",
     "preview": "turbo run generate && pnpm preview:serve",
-    "preview:serve": "concurrently -n distributor,internal,mobile -c green,blue,magenta \"serve -s apps/distributor/.output/public -l 4000\" \"serve -s apps/internal/.output/public -l 4001\" \"serve -s ../prototype-mobile/build/web -l 4002\"",
+    "preview:serve": "concurrently -n distributor,internal,mobile -c green,blue,magenta \"serve -s apps/distributor/.output/public -l 4000\" \"serve -s apps/internal/.output/public -l 4001\" \"serve -s mobile/build/web -l 4002\"",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck"

@@ -6,13 +6,17 @@ B2B e-ordering platform for PT Garuda Yamato Steel (GYS), connecting buyers (fab
 
 ## Layout
 
+The repository root **is** the Nuxt web monorepo (pnpm + Turborepo); the Flutter buyer app lives under `mobile/`.
+
 ```
-gys-ebuy/
-├── prototype-web/        # pnpm workspace (Nuxt 3 SPA + Turborepo)
-│   ├── apps/distributor/   Distributor portal
-│   ├── apps/internal/      GYS Internal console (Sales & IT)
-│   └── packages/ui/        Shared @gys/ui library + Tailwind brand preset
-└── prototype-mobile/     # Flutter (web) — Buyer mobile app
+gys-ebuy/                # repo root = web monorepo
+├── apps/
+│   ├── distributor/       Distributor portal
+│   └── internal/          GYS Internal console (Sales & IT)
+├── packages/ui/         Shared @gys/ui library + Tailwind brand preset
+├── mocks/               Shared JSON fixtures
+├── package.json         pnpm + Turborepo workspace root
+└── mobile/              Flutter (web) — Buyer mobile app
 ```
 
 ## Prerequisites
@@ -27,13 +31,13 @@ Generated build output (`.output/`, `build/web/`) is **not** committed, so build
 mobile app once first; `pnpm preview` regenerates the web output automatically.
 
 ```bash
-# 1) Build the Flutter buyer app for web (bundles CanvasKit locally).
-cd prototype-mobile
+# 1) Build the Flutter buyer app for web (run once; build output isn't committed).
+cd mobile
 flutter pub get
 flutter build web --release --no-web-resources-cdn
+cd ..
 
-# 2) Build + serve all three apps with one command.
-cd ../prototype-web
+# 2) From the repo root: build + serve all three apps with one command.
 pnpm install
 pnpm preview
 ```
@@ -53,13 +57,12 @@ Then open:
 ## Development mode (hot reload)
 
 ```bash
-# Web — Distributor on :3000, Internal on :3001
-cd prototype-web
+# Web — Distributor on :3000, Internal on :3001 (from the repo root)
 pnpm install
 pnpm dev               # runs both apps concurrently
 
 # Mobile — runs in Chrome with hot reload
-cd prototype-mobile
+cd mobile
 flutter pub get
 flutter run -d chrome
 ```

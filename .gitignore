@@ -12,7 +12,7 @@ node_modules/
 .nuxt/
 .output/
 .turbo/
-dist/
+dist
 
 # Env / secrets
 .env
