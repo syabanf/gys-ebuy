@@ -15,8 +15,10 @@ rm -rf "$DIST"
 mkdir -p "$DIST"
 
 echo "▸ [1/3] Building Nuxt web apps (sub-path base URLs)…"
-NUXT_APP_BASE_URL=/distributor/ pnpm --filter @gys/distributor generate
-NUXT_APP_BASE_URL=/internal/  pnpm --filter @gys/internal  generate
+# Force the static preset: on Vercel, Nitro otherwise auto-detects the platform
+# and writes to .vercel/output instead of .output/public.
+NITRO_PRESET=static NUXT_APP_BASE_URL=/distributor/ pnpm --filter @gys/distributor generate
+NITRO_PRESET=static NUXT_APP_BASE_URL=/internal/  pnpm --filter @gys/internal  generate
 cp -R apps/distributor/.output/public "$DIST/distributor"
 cp -R apps/internal/.output/public    "$DIST/internal"
 
