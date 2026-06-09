@@ -20,22 +20,32 @@ NUXT_APP_BASE_URL=/internal/  pnpm --filter @gys/internal  generate
 cp -R apps/distributor/.output/public "$DIST/distributor"
 cp -R apps/internal/.output/public    "$DIST/internal"
 
-echo "▸ [2/3] Building Flutter buyer app (web, base-href /mobile/)…"
-if ! command -v flutter >/dev/null 2>&1; then
-  echo "  flutter not on PATH — installing Flutter stable for this build…"
-  if [ ! -x "$ROOT/.flutter-sdk/bin/flutter" ]; then
-    git clone --depth 1 -b stable https://github.com/flutter/flutter.git "$ROOT/.flutter-sdk"
+echo "▸ [2/3] Mobile buyer app (Flutter web, base-href /mobile/)…"
+# Vercel has no Flutter SDK, so the mobile web build is committed at
+# mobile/web-build/ and used as-is. When Flutter IS available (local runs),
+# rebuild it fresh first so the committed copy stays current.
+if command -v flutter >/dev/null 2>&1; then
+  echo "  Flutter found — rebuilding mobile/web-build…"
+  rm -rf mobile/build/web
+  if ( cd mobile && flutter pub get && flutter build web --release --base-href /mobile/ ); then
+    rm -rf mobile/build/web/canvaskit   # CanvasKit is loaded from the gstatic CDN; drop the unused ~37MB local copy
+    rm -rf mobile/web-build
+    cp -R mobile/build/web mobile/web-build
+    find mobile/web-build \( -name "*.symbols" -o -name "* [0-9].*" -o -name "* [0-9]" \) -delete 2>/dev/null || true
+    rm -rf mobile/build/web   # transient; local `pnpm preview` rebuilds its own (base /) copy
+    echo "  ✓ refreshed mobile/web-build ($(du -sh mobile/web-build | cut -f1))"
+  else
+    echo "  ⚠ flutter build failed — falling back to committed mobile/web-build"
   fi
-  export PATH="$ROOT/.flutter-sdk/bin:$PATH"
-  flutter --version || true
+else
+  echo "  Flutter not on PATH (e.g. Vercel) — using committed mobile/web-build"
 fi
 
-rm -rf mobile/build/web   # ensure a clean output (no stale/duplicate artifacts)
-if ( cd mobile && flutter pub get && flutter build web --release --no-web-resources-cdn --base-href /mobile/ ); then
-  cp -R mobile/build/web "$DIST/mobile"
-  echo "  ✓ mobile built"
+if [ -d mobile/web-build ]; then
+  cp -R mobile/web-build "$DIST/mobile"
+  echo "  ✓ mobile → dist/mobile"
 else
-  echo "  ⚠ Flutter build failed — deploying web apps without the mobile app."
+  echo "  ⚠ mobile/web-build missing — deploying web apps without the mobile app."
 fi
 
 echo "▸ [3/3] Landing page"
